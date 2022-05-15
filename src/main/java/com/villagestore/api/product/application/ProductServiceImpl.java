@@ -30,7 +30,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<ProductDto> getProduct(Long id) {
+    public Optional<ProductDto> getProductById(Long id) {
         return productRepository
                 .findById(id)
                 .map(productMapper::toDto);
@@ -38,7 +38,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public ProductDto createProduct(ProductDto productDTO) {
+    public ProductDto addProduct(ProductDto productDTO) {
         Product product = productMapper.toEntity(productDTO);
         product = productRepository.save(product);
         return productMapper.toDto(product);

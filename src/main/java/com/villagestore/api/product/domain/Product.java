@@ -4,6 +4,7 @@ import com.villagestore.api.category.domain.Category;
 import com.villagestore.api.user.domain.User;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.util.Set;
 
 @Entity
@@ -22,6 +23,7 @@ public class Product {
     private String name;
     private Integer price;
     private String description;
+    @Column(length = 1000000)
     private String image;
 
     public Long getId() {

@@ -5,10 +5,7 @@ import java.util.Optional;
 
 public interface ProductService {
     List<ProductDto> getAllProducts();
-
-    ProductDto createProduct(ProductDto productDTO);
-
+    Optional<ProductDto> getProductById(Long id);
+    ProductDto addProduct(ProductDto productDTO);
     void deleteProduct(Long id);
-
-    Optional<ProductDto> getProduct(Long id);
 }

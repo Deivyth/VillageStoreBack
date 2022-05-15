@@ -1,5 +1,7 @@
 package com.villagestore.api.product.application;
 
+import java.util.Objects;
+
 public class ProductDto {
 
     private Long id;
@@ -7,8 +9,14 @@ public class ProductDto {
     private Integer price;
     private String description;
     private String image;
-    private String userName;
+
+    private String supplierId;
+    private String categoryId;
+    private String supplierName;
     private String categoryName;
+
+    public ProductDto() {
+    }
 
     public Long getId() {
         return id;
@@ -50,12 +58,28 @@ public class ProductDto {
         this.image = image;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getSupplierId() {
+        return supplierId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setSupplierId(String supplierId) {
+        this.supplierId = supplierId;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getSupplierName() {
+        return supplierName;
+    }
+
+    public void setSupplierName(String supplierName) {
+        this.supplierName = supplierName;
     }
 
     public String getCategoryName() {
@@ -64,5 +88,18 @@ public class ProductDto {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductDto that = (ProductDto) o;
+        return id.equals(that.id) && name.equals(that.name) && price.equals(that.price) && description.equals(that.description) && image.equals(that.image) && supplierId.equals(that.supplierId) && categoryId.equals(that.categoryId) && supplierName.equals(that.supplierName) && categoryName.equals(that.categoryName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price, description, image, supplierId, categoryId, supplierName, categoryName);
     }
 }
