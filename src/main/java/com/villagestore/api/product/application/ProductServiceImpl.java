@@ -1,5 +1,6 @@
 package com.villagestore.api.product.application;
 
+import com.villagestore.api.product.application.dto.ProductDto;
 import com.villagestore.api.product.domain.Product;
 import com.villagestore.api.product.infrastructure.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;

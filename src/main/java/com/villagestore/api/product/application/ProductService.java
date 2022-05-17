@@ -1,5 +1,7 @@
 package com.villagestore.api.product.application;
 
+import com.villagestore.api.product.application.dto.ProductDto;
+
 import java.util.List;
 import java.util.Optional;
 

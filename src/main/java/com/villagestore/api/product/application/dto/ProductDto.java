@@ -1,19 +1,19 @@
-package com.villagestore.api.product.application;
+package com.villagestore.api.product.application.dto;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class ProductDto {
+public class ProductDto implements Serializable {
 
     private Long id;
     private String name;
-    private Integer price;
-    private String description;
-    private String image;
-
     private String supplierId;
     private String categoryId;
     private String supplierName;
     private String categoryName;
+    private Integer price;
+    private String description;
+    private byte[] image;
 
     public ProductDto() {
     }
@@ -50,11 +50,11 @@ public class ProductDto {
         this.description = description;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 

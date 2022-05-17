@@ -16,15 +16,17 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User supplier;
-
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
     private String name;
     private Integer price;
     private String description;
-    @Column(length = 1000000)
-    private String image;
+    @Lob
+    private byte[] image;
+
+    public Product() {
+    }
 
     public Long getId() {
         return id;
@@ -74,11 +76,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 

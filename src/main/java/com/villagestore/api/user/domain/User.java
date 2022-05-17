@@ -1,6 +1,9 @@
 package com.villagestore.api.user.domain;
 
+import com.villagestore.api.cart.domain.Cart;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -15,7 +18,11 @@ public class User {
     private String name;
     @Column(nullable = false)
     private String password;
-    private String address;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Cart> cart;
+
+    public User() {
+    }
 
     public Long getId() {
         return id;
@@ -49,11 +56,11 @@ public class User {
         this.password = password;
     }
 
-    public String getAddress() {
-        return address;
+    public Set<Cart> getCart() {
+        return cart;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCart(Set<Cart> cartProducts) {
+        this.cart = cartProducts;
     }
 }

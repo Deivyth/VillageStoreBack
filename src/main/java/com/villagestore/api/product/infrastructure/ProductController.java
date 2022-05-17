@@ -1,6 +1,6 @@
 package com.villagestore.api.product.infrastructure;
 
-import com.villagestore.api.product.application.ProductDto;
+import com.villagestore.api.product.application.dto.ProductDto;
 import com.villagestore.api.product.application.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
+@CrossOrigin
 public class ProductController {
 
     private final ProductService productService;
