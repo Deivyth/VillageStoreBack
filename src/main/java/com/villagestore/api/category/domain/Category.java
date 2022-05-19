@@ -1,6 +1,5 @@
 package com.villagestore.api.category.domain;
 
-import com.villagestore.api.product.domain.Product;
 
 import javax.persistence.*;
 

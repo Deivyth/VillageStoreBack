@@ -4,7 +4,7 @@ import com.villagestore.api.category.domain.Category;
 import com.villagestore.api.category.infrastructure.CategoryRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -18,16 +18,21 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Optional<CategoryDto> getCategoryById(Long id) {
-        return categoryRepository
-                .findById(id)
-                .map(categoryMapper::toDto);
-    }
-
-    @Override
     public CategoryDto addCategory(CategoryDto categoryDto) {
         Category category = categoryMapper.toEntity(categoryDto);
         category = categoryRepository.save(category);
         return categoryMapper.toDto(category);
+    }
+
+    @Override
+    public List<CategoryDto> getCategories() {
+        List <Category> categories = categoryRepository.findAll();
+        return categoryMapper.toDto(categories);
+    }
+
+    @Override
+    public List<CategoryDto> getAllCategoriesByName(String partialName) {
+        List<Category> categories = categoryRepository.findByNameContainsIgnoreCase(partialName);
+        return categoryMapper.toDto(categories);
     }
 }

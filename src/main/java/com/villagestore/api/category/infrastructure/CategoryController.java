@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class CategoryController {
@@ -16,12 +18,17 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping(value = "/categories/{categoryId}", produces = "application/json")
-    public ResponseEntity<CategoryDto> getCategoryById (@PathVariable Long categoryId) {
-        return categoryService
-                .getCategoryById(categoryId)
-                .map(categoryDto -> new ResponseEntity(categoryDto, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    @GetMapping(value = "/categories", produces = "application/json")
+    ResponseEntity<List<CategoryDto>> getCategories(@RequestParam(name = "partialName", required = false) String partialName) {
+        List<CategoryDto> categories;
+
+        if(partialName == null) {
+            categories = categoryService.getCategories();
+        } else {
+            categories = categoryService.getAllCategoriesByName(partialName);
+        }
+
+        return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
     @PostMapping(value = "/categories", produces = "application/json", consumes = "application/json")
