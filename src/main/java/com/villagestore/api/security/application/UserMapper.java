@@ -1,13 +1,13 @@
-package com.villagestore.api.user.application;
+package com.villagestore.api.security.application;
 
 import com.villagestore.api.EntityMapper;
 import com.villagestore.api.cart.application.CartMapper;
-import com.villagestore.api.user.application.dto.UserDto;
-import com.villagestore.api.user.domain.User;
+import com.villagestore.api.security.dto.UserDTO;
+import com.villagestore.api.security.entity.User;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", uses = { CartMapper.class })
-public interface UserMapper extends EntityMapper<UserDto, User> {
+public interface UserMapper extends EntityMapper<UserDTO, User> {
 
     default User fromId(Long id) {
         if(id == null) {
@@ -17,4 +17,5 @@ public interface UserMapper extends EntityMapper<UserDto, User> {
         user.setId(id);
         return user;
     }
+
 }

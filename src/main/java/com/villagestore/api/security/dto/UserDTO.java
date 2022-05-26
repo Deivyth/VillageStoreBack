@@ -1,28 +1,16 @@
-package com.villagestore.api.user.domain;
+package com.villagestore.api.security.dto;
 
-import com.villagestore.api.cart.domain.Cart;
+import com.villagestore.api.cart.application.CartDto;
 
-import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
-@Entity
-@Table(name = "users")
-public class User {
+public class UserDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(unique = true, nullable = false)
     private String email;
-    @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
     private String password;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Cart> cart;
-
-    public User() {
-    }
+    private List<CartDto> cart;
 
     public Long getId() {
         return id;
@@ -56,11 +44,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<Cart> getCart() {
+    public List<CartDto> getCart() {
         return cart;
     }
 
-    public void setCart(Set<Cart> cartProducts) {
-        this.cart = cartProducts;
+    public void setCart(List<CartDto> cart) {
+        this.cart = cart;
     }
 }
