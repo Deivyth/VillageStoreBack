@@ -1,4 +1,4 @@
-package com.villagestore.api.security.dto;
+package com.villagestore.api.security.application.dto;
 
 import javax.validation.constraints.NotBlank;
 

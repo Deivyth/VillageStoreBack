@@ -1,6 +1,6 @@
-package com.villagestore.api.security.entity;
+package com.villagestore.api.security.domain.entity;
 
-import com.villagestore.api.security.enums.RolName;
+import com.villagestore.api.security.domain.enums.RolName;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

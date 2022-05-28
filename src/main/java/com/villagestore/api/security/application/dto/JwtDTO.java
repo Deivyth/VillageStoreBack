@@ -1,4 +1,4 @@
-package com.villagestore.api.security.dto;
+package com.villagestore.api.security.application.dto;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -8,10 +8,12 @@ public class JwtDTO {
 
     private String token;
     private String bearer = "Bearer";
+    private Long id;
     private String email;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public JwtDTO(String token, String email, Collection<? extends GrantedAuthority> authorities) {
+    public JwtDTO(String token,Long id, String email, Collection<? extends GrantedAuthority> authorities) {
+        this.id = id;
         this.token = token;
         this.email = email;
         this.authorities = authorities;
@@ -31,6 +33,14 @@ public class JwtDTO {
 
     public void setBearer(String bearer) {
         this.bearer = bearer;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {

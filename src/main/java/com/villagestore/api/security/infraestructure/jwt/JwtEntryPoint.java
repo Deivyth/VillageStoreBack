@@ -1,4 +1,4 @@
-package com.villagestore.api.security.jwt;
+package com.villagestore.api.security.infraestructure.jwt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
-package com.villagestore.api.security.jwt;
+package com.villagestore.api.security.infraestructure.jwt;
 
-import com.villagestore.api.security.entity.PrimaryUser;
+import com.villagestore.api.security.domain.entity.PrimaryUser;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

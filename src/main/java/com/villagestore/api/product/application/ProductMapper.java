@@ -4,7 +4,7 @@ import com.villagestore.api.EntityMapper;
 import com.villagestore.api.category.application.CategoryMapper;
 import com.villagestore.api.product.application.dto.ProductDto;
 import com.villagestore.api.product.domain.Product;
-import com.villagestore.api.user.application.UserMapper;
+import com.villagestore.api.security.application.UserMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

@@ -2,8 +2,8 @@ package com.villagestore.api.security.application;
 
 import com.villagestore.api.EntityMapper;
 import com.villagestore.api.cart.application.CartMapper;
-import com.villagestore.api.security.dto.UserDTO;
-import com.villagestore.api.security.entity.User;
+import com.villagestore.api.security.application.dto.UserDTO;
+import com.villagestore.api.security.domain.entity.User;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", uses = { CartMapper.class })

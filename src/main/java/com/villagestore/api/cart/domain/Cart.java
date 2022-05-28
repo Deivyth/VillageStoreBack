@@ -2,7 +2,9 @@ package com.villagestore.api.cart.domain;
 
 import com.villagestore.api.cart.CartKey;
 import com.villagestore.api.product.domain.Product;
-import com.villagestore.api.user.domain.User;
+import com.villagestore.api.security.domain.entity.User;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -10,13 +12,14 @@ import javax.persistence.*;
 public class Cart {
 
     @EmbeddedId
-    private CartKey id = new CartKey();
+    private CartKey id;
     @ManyToOne
     @MapsId("userId")
     @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne
     @MapsId("productId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "product_id")
     private Product product;
     private Integer quantity;

@@ -5,7 +5,7 @@ import com.villagestore.api.EntityMapper;
 import com.villagestore.api.cart.CartKey;
 import com.villagestore.api.cart.domain.Cart;
 import com.villagestore.api.product.application.ProductMapper;
-import com.villagestore.api.user.application.UserMapper;
+import com.villagestore.api.security.application.UserMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -14,7 +14,9 @@ public interface CartMapper extends EntityMapper<CartDto, Cart> {
 
     @Override
     @Mapping(source = "userId", target = "user")
+    @Mapping(source = "userId", target = "id.userId")
     @Mapping(source = "productId", target = "product")
+    @Mapping(source = "productId", target = "id.productId")
     Cart toEntity(CartDto dto);
 
     @Override

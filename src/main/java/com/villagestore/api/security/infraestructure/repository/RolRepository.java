@@ -1,7 +1,7 @@
-package com.villagestore.api.security.repository;
+package com.villagestore.api.security.infraestructure.repository;
 
-import com.villagestore.api.security.entity.Rol;
-import com.villagestore.api.security.enums.RolName;
+import com.villagestore.api.security.domain.entity.Rol;
+import com.villagestore.api.security.domain.enums.RolName;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

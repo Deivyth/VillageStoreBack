@@ -1,7 +1,7 @@
-package com.villagestore.api.security.service;
+package com.villagestore.api.security.application.service;
 
-import com.villagestore.api.security.entity.User;
-import com.villagestore.api.security.repository.UserRepository;
+import com.villagestore.api.security.domain.entity.User;
+import com.villagestore.api.security.infraestructure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

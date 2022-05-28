@@ -1,7 +1,7 @@
-package com.villagestore.api.security.service;
+package com.villagestore.api.security.application.service;
 
-import com.villagestore.api.security.entity.PrimaryUser;
-import com.villagestore.api.security.entity.User;
+import com.villagestore.api.security.domain.entity.PrimaryUser;
+import com.villagestore.api.security.domain.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

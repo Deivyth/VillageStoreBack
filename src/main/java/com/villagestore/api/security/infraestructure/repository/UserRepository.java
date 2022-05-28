@@ -1,6 +1,6 @@
-package com.villagestore.api.security.repository;
+package com.villagestore.api.security.infraestructure.repository;
 
-import com.villagestore.api.security.entity.User;
+import com.villagestore.api.security.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

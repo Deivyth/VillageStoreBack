@@ -1,6 +1,6 @@
-package com.villagestore.api.security.jwt;
+package com.villagestore.api.security.infraestructure.jwt;
 
-import com.villagestore.api.security.service.UserDetailsServiceImpl;
+import com.villagestore.api.security.application.service.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

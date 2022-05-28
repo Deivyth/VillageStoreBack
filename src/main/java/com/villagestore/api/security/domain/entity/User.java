@@ -1,4 +1,4 @@
-package com.villagestore.api.security.entity;
+package com.villagestore.api.security.domain.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

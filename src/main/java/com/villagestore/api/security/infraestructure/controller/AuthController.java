@@ -1,16 +1,17 @@
-package com.villagestore.api.security.controller;
+package com.villagestore.api.security.infraestructure.controller;
 
 
-import com.villagestore.api.security.dto.JwtDTO;
-import com.villagestore.api.security.dto.Message;
-import com.villagestore.api.security.dto.NewUser;
-import com.villagestore.api.security.dto.UserLogin;
-import com.villagestore.api.security.entity.Rol;
-import com.villagestore.api.security.entity.User;
-import com.villagestore.api.security.enums.RolName;
-import com.villagestore.api.security.jwt.JwtProvider;
-import com.villagestore.api.security.service.RolService;
-import com.villagestore.api.security.service.UserService;
+import com.villagestore.api.security.application.dto.JwtDTO;
+import com.villagestore.api.security.application.dto.Message;
+import com.villagestore.api.security.application.dto.NewUser;
+import com.villagestore.api.security.application.dto.UserLogin;
+import com.villagestore.api.security.domain.entity.PrimaryUser;
+import com.villagestore.api.security.domain.entity.Rol;
+import com.villagestore.api.security.domain.entity.User;
+import com.villagestore.api.security.domain.enums.RolName;
+import com.villagestore.api.security.infraestructure.jwt.JwtProvider;
+import com.villagestore.api.security.application.service.RolService;
+import com.villagestore.api.security.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +28,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/auth")
 @CrossOrigin
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired
@@ -70,8 +70,8 @@ public class AuthController {
                 authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLogin.getEmail(), userLogin.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateToken(authentication);
-        UserDetails userDetails = (UserDetails)authentication.getPrincipal();
-        JwtDTO jwtDto = new JwtDTO(jwt, userDetails.getUsername(), userDetails.getAuthorities());
+        PrimaryUser primaryUser = (PrimaryUser) authentication.getPrincipal();
+        JwtDTO jwtDto = new JwtDTO(jwt,primaryUser.getId(), primaryUser.getUsername(), primaryUser.getAuthorities());
         return new ResponseEntity(jwtDto, HttpStatus.OK);
     }
 }

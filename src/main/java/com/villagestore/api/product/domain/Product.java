@@ -1,11 +1,9 @@
 package com.villagestore.api.product.domain;
 
 import com.villagestore.api.category.domain.Category;
-import com.villagestore.api.user.domain.User;
+import com.villagestore.api.security.domain.entity.User;
 
 import javax.persistence.*;
-import java.sql.Blob;
-import java.util.Set;
 
 @Entity
 @Table(name = "products")
