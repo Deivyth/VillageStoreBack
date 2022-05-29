@@ -5,7 +5,6 @@ import com.villagestore.api.security.application.dto.JwtDTO;
 import com.villagestore.api.security.application.dto.Message;
 import com.villagestore.api.security.application.dto.NewUser;
 import com.villagestore.api.security.application.dto.UserLogin;
-import com.villagestore.api.security.domain.entity.PrimaryUser;
 import com.villagestore.api.security.domain.entity.Rol;
 import com.villagestore.api.security.domain.entity.User;
 import com.villagestore.api.security.domain.enums.RolName;
@@ -70,8 +69,7 @@ public class AuthController {
                 authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLogin.getEmail(), userLogin.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateToken(authentication);
-        PrimaryUser primaryUser = (PrimaryUser) authentication.getPrincipal();
-        JwtDTO jwtDto = new JwtDTO(jwt,primaryUser.getId(), primaryUser.getUsername(), primaryUser.getAuthorities());
+        JwtDTO jwtDto = new JwtDTO(jwt);
         return new ResponseEntity(jwtDto, HttpStatus.OK);
     }
 }
