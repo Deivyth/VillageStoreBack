@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class CartDto implements Serializable {
 
+    private Long id;
     private Long userId;
     private Long productId;
     private String productName;
@@ -14,6 +15,14 @@ public class CartDto implements Serializable {
     private Integer quantity;
 
     public CartDto() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getUserId() {

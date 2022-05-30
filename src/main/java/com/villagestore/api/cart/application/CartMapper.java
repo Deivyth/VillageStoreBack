@@ -2,7 +2,6 @@ package com.villagestore.api.cart.application;
 
 
 import com.villagestore.api.EntityMapper;
-import com.villagestore.api.cart.CartKey;
 import com.villagestore.api.cart.domain.Cart;
 import com.villagestore.api.product.application.ProductMapper;
 import com.villagestore.api.security.application.UserMapper;
@@ -14,9 +13,7 @@ public interface CartMapper extends EntityMapper<CartDto, Cart> {
 
     @Override
     @Mapping(source = "userId", target = "user")
-    @Mapping(source = "userId", target = "id.userId")
     @Mapping(source = "productId", target = "product")
-    @Mapping(source = "productId", target = "id.productId")
     Cart toEntity(CartDto dto);
 
     @Override
@@ -27,7 +24,7 @@ public interface CartMapper extends EntityMapper<CartDto, Cart> {
     @Mapping(source = "product.image", target = "productImage")
     CartDto toDto(Cart entity);
 
-    default Cart fromId(CartKey id) {
+    default Cart fromId(Long id) {
         if(id == null) return null;
         Cart cart = new Cart();
         cart.setId(id);

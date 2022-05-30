@@ -1,37 +1,32 @@
 package com.villagestore.api.cart.domain;
 
-import com.villagestore.api.cart.CartKey;
 import com.villagestore.api.product.domain.Product;
 import com.villagestore.api.security.domain.entity.User;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
 @Entity
 public class Cart {
 
-    @EmbeddedId
-    private CartKey id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @ManyToOne
-    @MapsId("userId")
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
     @ManyToOne
-    @MapsId("productId")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
     private Integer quantity;
 
     public Cart() {
     }
 
-    public CartKey getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(CartKey id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

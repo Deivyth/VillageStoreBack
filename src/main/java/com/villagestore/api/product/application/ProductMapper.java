@@ -13,6 +13,7 @@ public interface ProductMapper extends EntityMapper<ProductDto, Product> {
 
     @Mapping(source = "categoryId", target = "category")
     @Mapping(source = "supplierId", target = "supplier")
+    @Mapping(target = "cart", ignore = true )
     Product toEntity(ProductDto productDTO);
 
     @Mapping(source = "category.id", target = "categoryId")

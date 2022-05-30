@@ -1,9 +1,11 @@
 package com.villagestore.api.product.domain;
 
+import com.villagestore.api.cart.domain.Cart;
 import com.villagestore.api.category.domain.Category;
 import com.villagestore.api.security.domain.entity.User;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -22,6 +24,9 @@ public class Product {
     private String description;
     @Lob
     private byte[] image;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private Set<Cart> cart;
 
     public Product() {
     }
@@ -80,6 +85,14 @@ public class Product {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public Set<Cart> getCart() {
+        return cart;
+    }
+
+    public void setCart(Set<Cart> cart) {
+        this.cart = cart;
     }
 
     @Override
