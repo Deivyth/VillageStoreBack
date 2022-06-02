@@ -24,9 +24,10 @@ public class Product {
     private String description;
     @Lob
     private byte[] image;
-
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<Cart> cart;
+/*    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private Set<ProductLine> productLine;*/
 
     public Product() {
     }
@@ -94,6 +95,14 @@ public class Product {
     public void setCart(Set<Cart> cart) {
         this.cart = cart;
     }
+
+/*    public Set<ProductLine> getProductLine() {
+        return productLine;
+    }
+
+    public void setProductLine(Set<ProductLine> productLine) {
+        this.productLine = productLine;
+    }*/
 
     @Override
     public boolean equals(Object o) {

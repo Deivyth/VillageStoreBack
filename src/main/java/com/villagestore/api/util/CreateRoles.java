@@ -1,6 +1,8 @@
 package com.villagestore.api.util;
 
 import com.villagestore.api.security.application.service.RolService;
+import com.villagestore.api.security.domain.entity.Rol;
+import com.villagestore.api.security.domain.enums.RolName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,7 @@
 package com.villagestore.api.security.domain.entity;
 
 import com.villagestore.api.cart.domain.Cart;
+import com.villagestore.api.order.domain.Order;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -28,9 +29,10 @@ public class User {
             joinColumns = @JoinColumn(name = "usuario_id"),
             inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Cart> cart;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Order> order;
 
     public User() {
     }
@@ -87,5 +89,13 @@ public class User {
 
     public void setCart(Set<Cart> cart) {
         this.cart = cart;
+    }
+
+    public Set<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(Set<Order> order) {
+        this.order = order;
     }
 }

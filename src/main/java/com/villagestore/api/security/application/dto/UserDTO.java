@@ -1,6 +1,7 @@
 package com.villagestore.api.security.application.dto;
 
 import com.villagestore.api.cart.application.CartDto;
+import com.villagestore.api.order.application.OrderDTO;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class UserDTO {
     private String name;
     private String password;
     private List<CartDto> cart;
+    private List<OrderDTO> order;
 
     public Long getId() {
         return id;
@@ -50,5 +52,13 @@ public class UserDTO {
 
     public void setCart(List<CartDto> cart) {
         this.cart = cart;
+    }
+
+    public List<OrderDTO> getOrder() {
+        return order;
+    }
+
+    public void setOrder(List<OrderDTO> order) {
+        this.order = order;
     }
 }
