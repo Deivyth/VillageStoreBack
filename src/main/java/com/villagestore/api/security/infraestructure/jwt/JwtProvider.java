@@ -1,5 +1,9 @@
 package com.villagestore.api.security.infraestructure.jwt;
 
+import com.nimbusds.jwt.JWT;
+import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.JWTParser;
+import com.villagestore.api.security.application.dto.JwtDTO;
 import com.villagestore.api.security.domain.entity.PrimaryUser;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
@@ -9,9 +13,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class JwtProvider {
@@ -28,10 +32,8 @@ public class JwtProvider {
 
         return Jwts.builder().setSubject(primaryUser.getEmail())
                 .claim("roles", roles)
-                .claim("id", primaryUser.getId())
-                .claim("name", primaryUser.getName())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + expiration * 1000L))
+                .setExpiration(new Date(new Date().getTime() + expiration))
                 .signWith(SignatureAlgorithm.HS512, secret.getBytes())
                 .compact();
     }
@@ -56,6 +58,20 @@ public class JwtProvider {
             logger.error("fail en la firma");
         }
         return false;
+    }
+
+    public String refreshToken(JwtDTO jwtDTO) throws ParseException {
+        JWT jwt = JWTParser.parse(jwtDTO.getToken());
+        JWTClaimsSet claims = jwt.getJWTClaimsSet();
+        String email = claims.getSubject();
+        List<String> roles = (List<String>) claims.getClaim("roles");
+
+        return Jwts.builder().setSubject(email)
+                .claim("roles", roles)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(new Date().getTime() + expiration))
+                .signWith(SignatureAlgorithm.HS512, secret.getBytes())
+                .compact();
     }
 
 }

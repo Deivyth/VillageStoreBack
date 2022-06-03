@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -22,10 +23,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<OrderDTO> getAllOrders() {
         List<Order> orders = orderRepository.findAll();
         return orderMapper.toDto(orders);
+    }
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<OrderDTO> getOrderById(Long id) {
+        return orderRepository
+                .findById(id)
+                .map(orderMapper::toDto);
     }
     @Override
     @Transactional
@@ -33,5 +41,10 @@ public class OrderServiceImpl implements OrderService {
         orderDTO.setDate(new Date());
         Order order = orderRepository.save(orderMapper.toEntity(orderDTO));
         return orderMapper.toDto(order);
+    }
+
+    @Override
+    public void deleteOrders() {
+        orderRepository.deleteAll();
     }
 }
