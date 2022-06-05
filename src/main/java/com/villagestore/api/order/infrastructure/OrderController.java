@@ -20,9 +20,9 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping(value = "/users/orders",  produces = "application/json")
-    public ResponseEntity<List<OrderDTO>> getUserOrders() {
-        List<OrderDTO> orders = orderService.getAllOrders();
+    @GetMapping(value = "/users/{userId}/orders",  produces = "application/json")
+    public ResponseEntity<List<OrderDTO>> getUserOrders(@PathVariable Long userId) {
+        List<OrderDTO> orders = orderService.findByUserId(userId);
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 

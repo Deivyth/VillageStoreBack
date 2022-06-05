@@ -24,8 +24,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<OrderDTO> getAllOrders() {
-        List<Order> orders = orderRepository.findAll();
+    public List<OrderDTO> findByUserId(Long userId) {
+        List<Order> orders = orderRepository.findAllByUserId(userId);
         return orderMapper.toDto(orders);
     }
     @Override
